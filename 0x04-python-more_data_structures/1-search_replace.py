@@ -1,9 +1,5 @@
 #!/usr/bin/python3
-def search_replace(my_list, search, replace):
-  replaced_list = []
-  
-  for i in my_list:
-    if i == search:
-      i = replace
-    replaced_list.append(i)
-  return replaced_list
+def simple_delete(a_dictionary, key=""):
+    if a_dictionary.get(key) is not None:
+        del a_dictionary[key]
+    return (a_dictionary)
