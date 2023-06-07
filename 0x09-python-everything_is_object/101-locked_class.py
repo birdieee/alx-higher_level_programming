@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-""" LockedClass
-"""
+"""The ``LockedClass`` module"""
 
 
 class LockedClass:
-    __slots__= ['first_name']
+    """The LockedClass"""
+
+    __slots__ = "first_name"
