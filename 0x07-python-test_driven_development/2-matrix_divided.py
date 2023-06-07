@@ -1,58 +1,48 @@
 #!/usr/bin/python3
 """
-
-This is composed by a function that divides the numbers of a matrix.
-
+This is the ``2-matrix_divided`` module.
+the 2-matrix_dived module provide one function. matrix_divied().
 """
 
 
 def matrix_divided(matrix, div):
-    """ Function that divide the integer/float numbers of a matrix.
+    """
+        A function that divides all elements o fa matrix.
 
-    Args:
-        matrix: list of a lists of integers/floats
-        div: number which divides the matrix
-
-    Returns:
-        A new matrix with the result of the division
-
-    Raises:
-        TypeError: If the elements of the matrix aren't lists
-                   If the elemetns of the lists aren't integers/floats
-                   If div is not an integer/float number
-                   If the lists of the matrix don't have the same size
-
-        ZeroDivisionError: If div is zero
-
-
+            Args:
+                matrix (list): A list of lists
+                div (int|float): A integer of a float
     """
 
-    if not type(div) in (int, float):
+    if type(div) is not float and type(div) is not int:
         raise TypeError("div must be a number")
 
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    msg_type = "matrix must be a matrix (list of lists) of integers/floats"
+    m_err = "matrix must be a matrix (list of lists) of integers/floats"
+    if type(matrix) is not list:
+        raise TypeError(m_err)
 
-    if not matrix or not isinstance(matrix, list):
-        raise TypeError(msg_type)
+    row_size = 0
+    if matrix and type(matrix[0]) is list:
+        row_size = len(matrix[0])
 
-    len_e = 0
-    msg_size = "Each row of the matrix must have the same size"
+    new_matrix = []
+    for row in matrix:
+        new_row = []
+        if type(row) is not list:
+            raise TypeError(m_err)
 
-    for elems in matrix:
-        if not elems or not isinstance(elems, list):
-            raise TypeError(msg_type)
+        if len(row) != row_size:
+            raise TypeError("Each row of the matrix must have the same size")
 
-        if len_e != 0 and len(elems) != len_e:
-            raise TypeError(msg_size)
+        for i in range(row_size):
+            value = row[i]
+            if type(value) is not int and type(value) is not float:
+                raise TypeError(m_err)
+            new_row.append(round(value / div, 2))
 
-        for num in elems:
-            if not type(num) in (int, float):
-                raise TypeError(msg_type)
+        new_matrix.append(new_row)
 
-        len_e = len(elems)
-
-    m = list(map(lambda x: list(map(lambda y: round(y / div, 2), x)), matrix))
-    return (m)
+    return new_matrix
