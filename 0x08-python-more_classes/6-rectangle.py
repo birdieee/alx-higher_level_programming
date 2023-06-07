@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 '''module: rectangle
-this module contains the class Rectangle ...
+the  module contains the class Rectangle.
 '''
 
 
